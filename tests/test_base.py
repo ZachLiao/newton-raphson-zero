@@ -1,5 +1,5 @@
-from project_name.base import NAME
+from newton_raphson_zero.base import NAME
 
 
 def test_base():
-    assert NAME == "project_name"
+    assert NAME == "newton_raphson_zero"
