@@ -9,6 +9,7 @@ Be creative! do whatever you want!
 """
 import sympy as sp
 
+# Newton-Raphson Method
 def newtonsMethod(x_guess, func, func_derivative, max_iter = 100, tol = 1e-4):
     x = x_guess
     print("n\tXn\t\t\t\tf(Xn)\t\t\t\tf'(Xn)\t\t\t\tf(Xn)/f'(Xn)\t\t\t\tXn - f(Xn)/f'(Xn)")
@@ -17,12 +18,13 @@ def newtonsMethod(x_guess, func, func_derivative, max_iter = 100, tol = 1e-4):
         f_prime = func_derivative.subs('x', x)
         m = f/f_prime
         x_new = x - m
-        if abs(x_new - x) < tol: # y=0 is the accurate answer; if output of func is within tol, that means we get the correct answer
+        if abs(x_new - x) < tol: # If difference between current x and previous x is less than tolerance, that means we get the acceptable answer
             return x, i - 1
         print(f"{i}\t{x}\t\t{f}\t\t{f_prime}\t\t{m}\t\t\t{x_new}")
         x = x_new
     return None, max_iter
 
+# Loop until we get valid function input
 def get_valid_input(prompt):
     while True:
         user_input = input(prompt)
@@ -32,7 +34,6 @@ def get_valid_input(prompt):
             print("Invalid input. Please try again.")
 
 def main():
-    # Convert the string to a SymPy expression
     func = get_valid_input("f(x): ")
     func_derivative = get_valid_input("f'(x): ")
     x_guess = float(input("Initial guess of x: "))
